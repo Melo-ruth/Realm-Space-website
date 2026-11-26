@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Realm Space design tokens. Dark only, single accent.
+   Fonts are loaded in app/fonts.ts; swap them there.
+------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b1113;
+  --surface: #131d1f;
+  --surface-2: #1a2729;
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f4f7f7;
+  --muted: #9fb0b3;
+  --accent: #bfe4eb;
+  --accent-ink: #0b1113;
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-display: var(--font-display-face), "Arial Black", system-ui, sans-serif;
+  --font-body: var(--font-body-face), system-ui, sans-serif;
+  --font-sans: var(--font-body-face), system-ui, sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --animate-hero-zoom: hero-zoom 20s ease-out forwards;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
   }
 }
 
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Visible focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Photo grading: cool surroundings, warm light stands out */
+.photo-grade {
+  filter: brightness(0.85) saturate(0.9);
+}
+
+/* Fade-up on scroll (toggled by <FadeUp>) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Native date picker icon on dark inputs */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.7);
 }
