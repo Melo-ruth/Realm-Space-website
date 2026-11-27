@@ -132,3 +132,23 @@ export function DetailList({ title, items, id }: { title: string; items: string[
     </section>
   );
 }
+
+/** Placeholder shown while a detail page's URL-specific content streams in. */
+export function DetailSkeleton() {
+  return (
+    <div className="pb-24 pt-28 lg:pb-32 lg:pt-36" aria-busy="true" aria-live="polite">
+      <Container>
+        <span className="sr-only">Loading property…</span>
+        <div aria-hidden className="animate-pulse motion-reduce:animate-none">
+          <div className="h-3 w-56 rounded-[2px] bg-surface-2" />
+          <div className="mt-8 h-5 w-24 rounded-[2px] bg-surface-2" />
+          <div className="mt-4 h-12 w-3/4 max-w-2xl rounded-[2px] bg-surface-2" />
+          <div className="mt-10 grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
+            <div className="aspect-[16/10] rounded-[3px] bg-surface" />
+            <div className="h-[420px] rounded-[4px] border border-line bg-surface" />
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+}

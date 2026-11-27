@@ -17,7 +17,7 @@ export function Gallery({ images, title }: { images: ImageRef[]; title: string }
           src={current.src}
           alt={current.alt}
           sizes="(min-width: 1280px) 760px, (min-width: 1024px) 60vw, 100vw"
-          priority={active === 0}
+          preload={active === 0}
           overlay="bottom"
           className="absolute inset-0"
         />

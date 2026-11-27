@@ -97,8 +97,8 @@ export function LandBrowser({ items }: { items: LandListing[] }) {
         <SelectField id="land-size" label="Plot size" placeholder="Any size" value={size} onChange={(e) => setSize(e.target.value)} options={LAND_SIZES} />
       </FilterBar>
       <Grid empty={emptyState}>
-        {results.map((l) => (
-          <ListingCard key={l.slug} listing={l} {...landCardProps(l)} />
+        {results.map((l, i) => (
+          <ListingCard key={l.slug} listing={l} eager={i < 3} {...landCardProps(l)} />
         ))}
       </Grid>
     </>
@@ -170,8 +170,8 @@ export function ApartmentBrowser({ items }: { items: ApartmentListing[] }) {
         />
       </FilterBar>
       <Grid empty={emptyState}>
-        {results.map((a) => (
-          <ListingCard key={a.slug} listing={a} {...apartmentCardProps(a)} />
+        {results.map((a, i) => (
+          <ListingCard key={a.slug} listing={a} eager={i < 3} {...apartmentCardProps(a)} />
         ))}
       </Grid>
     </>
@@ -181,8 +181,8 @@ export function ApartmentBrowser({ items }: { items: ApartmentListing[] }) {
 export function StayGrid({ items }: { items: StayListing[] }) {
   return (
     <Grid empty={emptyState}>
-      {items.map((s) => (
-        <ListingCard key={s.slug} listing={s} {...stayCardProps(s)} />
+      {items.map((s, i) => (
+        <ListingCard key={s.slug} listing={s} eager={i < 3} {...stayCardProps(s)} />
       ))}
     </Grid>
   );

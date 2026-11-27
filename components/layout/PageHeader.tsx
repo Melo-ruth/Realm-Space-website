@@ -20,7 +20,7 @@ export function PageHeader({
 }) {
   return (
     <section className="relative overflow-hidden">
-      <Photo src={image} alt={imageAlt} sizes="100vw" priority overlay="none" className="absolute inset-0" />
+      <Photo src={image} alt={imageAlt} sizes="100vw" preload overlay="none" className="absolute inset-0" />
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(11,17,19,0.85)_0%,rgba(11,17,19,0.55)_45%,#0B1113_100%)]"

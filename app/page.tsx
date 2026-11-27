@@ -49,7 +49,7 @@ export default function HomePage() {
             src="/images/hero.jpg"
             alt={HERO.imageAlt}
             sizes="100vw"
-            priority
+            preload
             overlay="none"
             className="absolute inset-0"
             imgClassName="animate-hero-zoom object-[60%_center]"

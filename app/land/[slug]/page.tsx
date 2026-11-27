@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { DetailLayout } from "@/components/listings/DetailLayout";
+import { Suspense } from "react";
+import { DetailLayout, DetailSkeleton } from "@/components/listings/DetailLayout";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { land, getLand } from "@/data/land";
 import { formatAcres, formatUGX } from "@/lib/format";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/land/[slug]">): P
   });
 }
 
-export default async function LandDetailPage({ params }: PageProps<"/land/[slug]">) {
+async function LandDetail({ params }: Pick<PageProps<"/land/[slug]">, "params">) {
   const { slug } = await params;
   const plot = getLand(slug);
   if (!plot) notFound();
@@ -75,5 +76,18 @@ export default async function LandDetailPage({ params }: PageProps<"/land/[slug]
         </section>
       </DetailLayout>
     </>
+  );
+}
+
+/**
+ * The slug is read inside <Suspense> so the route's shared App Shell stays
+ * URL-independent and navigation can show the skeleton instantly.
+ * Known slugs are still fully prerendered via generateStaticParams.
+ */
+export default function LandDetailPage({ params }: PageProps<"/land/[slug]">) {
+  return (
+    <Suspense fallback={<DetailSkeleton />}>
+      <LandDetail params={params} />
+    </Suspense>
   );
 }

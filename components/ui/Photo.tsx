@@ -10,7 +10,8 @@ export function Photo({
   src,
   alt,
   sizes,
-  priority = false,
+  preload = false,
+  eager = false,
   className,
   imgClassName,
   overlay = "both",
@@ -19,7 +20,10 @@ export function Photo({
   src: string;
   alt: string;
   sizes: string;
-  priority?: boolean;
+  /** Preload in <head>: use for the single hero/LCP image of a page. */
+  preload?: boolean;
+  /** Skip lazy loading: use for images visible on first paint. */
+  eager?: boolean;
   className?: string;
   imgClassName?: string;
   overlay?: "both" | "bottom" | "none" | "strong";
@@ -32,7 +36,8 @@ export function Photo({
         alt={alt}
         fill
         sizes={sizes}
-        priority={priority}
+        preload={preload}
+        loading={preload || eager ? "eager" : undefined}
         className={cn(
           "photo-grade object-cover",
           hoverZoom && "transition-transform duration-700 ease-out group-hover:scale-[1.03]",

@@ -63,12 +63,15 @@ export function ListingCard({
   price,
   priceNote,
   cta = "Inquire",
+  eager = false,
 }: {
   listing: Listing;
   meta: string[];
   price: string;
   priceNote?: string;
   cta?: string;
+  /** First row of a grid: visible on load, so don't lazy-load the photo. */
+  eager?: boolean;
 }) {
   const href = listingHref(listing);
   return (
@@ -78,6 +81,7 @@ export function ListingCard({
           src={listing.images[0].src}
           alt=""
           sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+          eager={eager}
           overlay="bottom"
           hoverZoom
           className="absolute inset-0"

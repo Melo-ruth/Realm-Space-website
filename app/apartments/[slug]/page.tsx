@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { DetailLayout, DetailList } from "@/components/listings/DetailLayout";
+import { Suspense } from "react";
+import { DetailLayout, DetailList, DetailSkeleton } from "@/components/listings/DetailLayout";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { apartments, getApartment } from "@/data/apartments";
 import { bedroomsLabel, formatUGX } from "@/lib/format";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/apartments/[slug]
   });
 }
 
-export default async function ApartmentDetailPage({ params }: PageProps<"/apartments/[slug]">) {
+async function ApartmentDetail({ params }: Pick<PageProps<"/apartments/[slug]">, "params">) {
   const { slug } = await params;
   const apt = getApartment(slug);
   if (!apt) notFound();
@@ -60,5 +61,18 @@ export default async function ApartmentDetailPage({ params }: PageProps<"/apartm
         <DetailList id="amenities-heading" title="Amenities" items={apt.amenities} />
       </DetailLayout>
     </>
+  );
+}
+
+/**
+ * The slug is read inside <Suspense> so the route's shared App Shell stays
+ * URL-independent and navigation can show the skeleton instantly.
+ * Known slugs are still fully prerendered via generateStaticParams.
+ */
+export default function ApartmentDetailPage({ params }: PageProps<"/apartments/[slug]">) {
+  return (
+    <Suspense fallback={<DetailSkeleton />}>
+      <ApartmentDetail params={params} />
+    </Suspense>
   );
 }

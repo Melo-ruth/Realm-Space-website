@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { DetailLayout, DetailList } from "@/components/listings/DetailLayout";
+import { Suspense } from "react";
+import { DetailLayout, DetailList, DetailSkeleton } from "@/components/listings/DetailLayout";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { ButtonLink } from "@/components/ui/primitives";
 import { getStay, stays } from "@/data/stays";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps<"/stays/[slug]">): 
 const monthYear = (ym: string) =>
   new Date(`${ym}-01T00:00:00Z`).toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
 
-export default async function StayDetailPage({ params }: PageProps<"/stays/[slug]">) {
+async function StayDetail({ params }: Pick<PageProps<"/stays/[slug]">, "params">) {
   const { slug } = await params;
   const stay = getStay(slug);
   if (!stay) notFound();
@@ -116,5 +117,18 @@ export default async function StayDetailPage({ params }: PageProps<"/stays/[slug
         </section>
       </DetailLayout>
     </>
+  );
+}
+
+/**
+ * The slug is read inside <Suspense> so the route's shared App Shell stays
+ * URL-independent and navigation can show the skeleton instantly.
+ * Known slugs are still fully prerendered via generateStaticParams.
+ */
+export default function StayDetailPage({ params }: PageProps<"/stays/[slug]">) {
+  return (
+    <Suspense fallback={<DetailSkeleton />}>
+      <StayDetail params={params} />
+    </Suspense>
   );
 }
