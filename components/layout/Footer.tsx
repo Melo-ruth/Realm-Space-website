@@ -59,7 +59,7 @@ export function Footer() {
             ))}
             <li>
               <Link href="/owners#owner-form" className="text-text/85 transition-colors hover:text-white">
-                List Your Property
+                List your property
               </Link>
             </li>
           </ul>

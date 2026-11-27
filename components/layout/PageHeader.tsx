@@ -23,7 +23,7 @@ export function PageHeader({
       <Photo src={image} alt={imageAlt} sizes="100vw" preload overlay="none" className="absolute inset-0" />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(11,17,19,0.85)_0%,rgba(11,17,19,0.55)_45%,#0B1113_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(26,35,37,0.85)_0%,rgba(26,35,37,0.55)_45%,#1A2325_100%)]"
       />
       <Container className="relative pb-14 pt-36 lg:pb-20 lg:pt-48">
         <Eyebrow className="text-text/80">{eyebrow}</Eyebrow>

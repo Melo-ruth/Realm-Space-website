@@ -55,8 +55,8 @@ export function WhatsAppFloat() {
         <WhatsAppIcon width={26} height={26} className="relative" />
       </span>
       <span className="hidden flex-col leading-none sm:flex">
-        <span className="text-[0.6rem] font-semibold uppercase tracking-[0.18em] opacity-70">Questions?</span>
-        <span className="mt-1 text-xs font-bold uppercase tracking-[0.14em]">Chat on WhatsApp</span>
+        <span className="text-[0.72rem] font-medium opacity-70">Questions?</span>
+        <span className="mt-1 text-[0.85rem] font-bold">Chat on WhatsApp</span>
       </span>
     </a>
   );

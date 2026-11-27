@@ -54,6 +54,7 @@ export const NAV = [
 
 export const HERO = {
   label: "Real estate in Kampala, Uganda",
+  lead: "Verified, inspected and honestly priced: property in Kampala, done right.",
   intro:
     "Land with clear titles, apartments worth moving into and short-stay homes that feel like yours. We walk every plot and inspect every unit before it reaches this page.",
   imageAlt:

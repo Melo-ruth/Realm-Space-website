@@ -95,7 +95,7 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "text-[0.7rem] uppercase tracking-[0.16em] transition-colors hover:text-white",
+                      "text-[0.82rem] transition-colors hover:text-white",
                       active ? "font-bold text-white" : "font-medium text-text/75",
                     )}
                   >
@@ -105,15 +105,24 @@ export function Header() {
               );
             })}
           </ul>
-          <Link href="/owners#owner-form" className={buttonClass("secondary", "px-4 py-2.5 text-[0.65rem]")}>
-            List Your Property
+          <Link href="/owners#owner-form" className={buttonClass("secondary", "px-4 py-2.5 text-[0.8rem]")}>
+            List your property
           </Link>
         </nav>
 
+        <div className="flex items-center gap-4 lg:hidden">
+        {/* Quick contact link beside the menu button, as in the reference phone layout */}
+        <Link
+          href="/contact"
+          aria-current={isActive(pathname, "/contact") ? "page" : undefined}
+          className={cn("text-[0.82rem] hover:text-white", isActive(pathname, "/contact") ? "font-bold text-white" : "font-medium text-text/80")}
+        >
+          Contact
+        </Link>
         <button
           ref={toggleRef}
           type="button"
-          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-text lg:hidden"
+          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-text"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -121,6 +130,7 @@ export function Header() {
         >
           {open ? <CloseIcon width={26} height={26} /> : <MenuIcon width={26} height={26} />}
         </button>
+        </div>
       </div>
 
       {open && (
@@ -156,7 +166,7 @@ export function Header() {
           </nav>
           <div className="mt-8 flex flex-col gap-3">
             <Link href="/owners#owner-form" onClick={() => setOpen(false)} className={buttonClass("primary")}>
-              List Your Property
+              List your property
             </Link>
             <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className={buttonClass("ghost")}>
               Call {SITE.phone}

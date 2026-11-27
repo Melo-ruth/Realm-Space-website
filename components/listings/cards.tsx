@@ -33,7 +33,7 @@ export function FeatureCard({ listing, sizes }: { listing: Listing; sizes: strin
   return (
     <Link
       href={listingHref(listing)}
-      className="group relative block aspect-[3/4] overflow-hidden rounded-[3px] sm:aspect-[4/5]"
+      className="group relative block aspect-[3/4] overflow-hidden rounded-[3px] lg:aspect-[3/5]"
     >
       <Photo
         src={listing.images[0].src}
@@ -46,11 +46,9 @@ export function FeatureCard({ listing, sizes }: { listing: Listing; sizes: strin
       <div className="absolute inset-x-0 top-0 p-3 sm:p-4">
         <Tag>{listingTag(listing)}</Tag>
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
-        <p className="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-muted sm:text-xs">{listing.location}</p>
-        <h3 className="mt-1.5 font-display text-sm font-semibold uppercase leading-tight text-text sm:text-lg">
-          {listing.title}
-        </h3>
+      <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
+        <h3 className="text-[0.85rem] font-bold leading-tight text-white sm:text-[0.95rem]">{listing.title}</h3>
+        <p className="mt-1 line-clamp-2 text-[0.72rem] leading-snug text-text/75 sm:text-[0.78rem]">{listing.summary}</p>
       </div>
     </Link>
   );
@@ -107,7 +105,7 @@ export function ListingCard({
             {price}
             {priceNote && <span className="ml-1 font-body text-xs font-medium text-muted">{priceNote}</span>}
           </p>
-          <Link href={`${href}#inquire`} className={buttonClass("ghost", "px-4 py-2.5 text-[0.65rem]")}>
+          <Link href={`${href}#inquire`} className={buttonClass("ghost", "px-4 py-2.5 text-[0.8rem]")}>
             {cta}
             <span className="sr-only"> about {listing.title}</span>
           </Link>

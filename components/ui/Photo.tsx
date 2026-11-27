@@ -50,10 +50,10 @@ export function Photo({
           className={cn(
             "pointer-events-none absolute inset-0",
             overlay === "both" &&
-              "bg-[linear-gradient(to_bottom,rgba(11,17,19,0.75)_0%,rgba(11,17,19,0)_28%,rgba(11,17,19,0)_55%,rgba(11,17,19,0.92)_100%)]",
+              "bg-[linear-gradient(to_bottom,rgba(26,35,37,0.75)_0%,rgba(26,35,37,0)_28%,rgba(26,35,37,0)_55%,rgba(26,35,37,0.92)_100%)]",
             overlay === "bottom" &&
-              "bg-[linear-gradient(to_bottom,rgba(11,17,19,0)_40%,rgba(11,17,19,0.9)_100%)]",
-            overlay === "strong" && "bg-[linear-gradient(to_bottom,rgba(11,17,19,0.8),rgba(11,17,19,0.85))]",
+              "bg-[linear-gradient(to_bottom,rgba(26,35,37,0)_40%,rgba(26,35,37,0.9)_100%)]",
+            overlay === "strong" && "bg-[linear-gradient(to_bottom,rgba(26,35,37,0.8),rgba(26,35,37,0.85))]",
           )}
         />
       )}

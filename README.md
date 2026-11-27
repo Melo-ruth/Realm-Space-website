@@ -1,6 +1,6 @@
 # Realm Space Properties: website
 
-Marketing and listings site for Realm Space Properties Ltd, Kampala. Built with Next.js 16 (App Router, Cache Components), TypeScript, Tailwind CSS 4, `next/font` and `next/image`. Dark theme only, with one accent colour.
+Marketing and listings site for Realm Space Properties Ltd, Kampala. The look follows `reference/design.jpg` (colours were sampled from it). Built with Next.js 16 (App Router, Cache Components), TypeScript, Tailwind CSS 4, `next/font` and `next/image`. Dark theme only, with one accent colour.
 
 ## Setup
 

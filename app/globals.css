@@ -5,9 +5,9 @@
    Fonts are loaded in app/fonts.ts; swap them there.
 ------------------------------------------------------------------ */
 :root {
-  --bg: #0b1113;
-  --surface: #131d1f;
-  --surface-2: #1a2729;
+  --bg: #1a2325; /* teal-grey panel colour sampled from reference/design.jpg */
+  --surface: #212c2f;
+  --surface-2: #2a3739;
   --line: rgba(255, 255, 255, 0.14);
   --text: #f4f7f7;
   --muted: #9fb0b3;

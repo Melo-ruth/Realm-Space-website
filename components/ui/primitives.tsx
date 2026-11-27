@@ -25,7 +25,7 @@ export function Section({
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("text-xs font-medium uppercase tracking-[0.22em] text-muted", className)}>{children}</p>
+    <p className={cn("text-[0.8rem] font-medium tracking-[0.01em] text-muted", className)}>{children}</p>
   );
 }
 
@@ -54,7 +54,7 @@ export function SectionTitle({
 }
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 rounded-[3px] px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[3px] px-5 py-3 text-[0.85rem] font-semibold leading-none transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
 
 const buttonVariants = {
   primary: "bg-accent text-accent-ink hover:bg-white",
@@ -110,7 +110,7 @@ export function StatBlock({ value, label, size = "lg" }: { value: string; label:
         >
           {value}
         </p>
-        <p className="mt-2 text-[0.7rem] font-medium uppercase leading-snug tracking-[0.14em] text-muted sm:text-xs">
+        <p className="mt-2 text-[0.78rem] font-medium leading-snug text-text/75 sm:text-[0.85rem]">
           {label}
         </p>
       </div>
@@ -124,7 +124,7 @@ export function GhostText({ children, className }: { children: ReactNode; classN
     <span
       aria-hidden
       className={cn(
-        "pointer-events-none select-none font-display font-extrabold uppercase leading-none text-white/[0.07]",
+        "pointer-events-none select-none font-display font-extrabold leading-none text-white/[0.06]",
         className,
       )}
     >
